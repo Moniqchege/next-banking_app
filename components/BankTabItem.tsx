@@ -35,5 +35,3 @@ export const BankTabItem = ({ account, appwriteItemId }: BankTabItemProps) => {
     </div>
   );
 };
-
-export default BankTabItem;

@@ -1,5 +1,5 @@
-"use client"
-import React from 'react'
+'use client'
+
 import {
   Sheet,
   SheetClose,
@@ -9,15 +9,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { sidebarLinks } from '@/constants'
-import { cn } from '@/lib/utils'
-import Footer from './Footer'
+import { sidebarLinks } from "@/constants"
+import { cn } from "@/lib/utils"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import Footer from "./Footer"
 
 const MobileNav = ({ user }: MobileNavProps) => {
-
   const pathname = usePathname();
 
   return (
@@ -32,9 +31,9 @@ const MobileNav = ({ user }: MobileNavProps) => {
             className="cursor-pointer"
           />
         </SheetTrigger>
-        <SheetContent side="left" className='border-none bg-white'>
+        <SheetContent side="left" className="border-none bg-white">
           <Link href="/" className="cursor-pointer flex items-center gap-1 px-4">
-            <Image
+            <Image 
               src="/icons/logo.svg"
               width={34}
               height={34}
@@ -45,18 +44,15 @@ const MobileNav = ({ user }: MobileNavProps) => {
           <div className="mobilenav-sheet">
             <SheetClose asChild>
               <nav className="flex h-full flex-col gap-6 pt-16 text-white">
-                {sidebarLinks.map((item) => {
+                  {sidebarLinks.map((item) => {
+                const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`)
 
-                  const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`)
-
-                  return (
-                    <SheetClose asChild key={item.route}>
-                      <Link
-                      href={item.route}
-                      key={item.label}
+                return (
+                  <SheetClose asChild key={item.route}>
+                    <Link href={item.route} key={item.label}
                       className={cn('mobilenav-sheet_close w-full', { 'bg-bank-gradient': isActive })}
                     >
-                        <Image
+                        <Image 
                           src={item.imgURL}
                           alt={item.label}
                           width={20}
@@ -69,11 +65,11 @@ const MobileNav = ({ user }: MobileNavProps) => {
                         {item.label}
                       </p>
                     </Link>
-                    </SheetClose>
-                    
-                  )
-                })}
-                USER
+                  </SheetClose>
+                )
+              })}
+
+              USER
               </nav>
             </SheetClose>
 
